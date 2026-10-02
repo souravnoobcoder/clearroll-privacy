@@ -48,6 +48,10 @@
     li { margin: 6px 0; }
     code { font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
     a { color: var(--accent); overflow-wrap: anywhere; }
+    dl { margin: 12px 0 0; }
+    dt { margin-top: 14px; font-weight: 600; }
+    dt code { font-size: 14px; color: var(--text); }
+    dd { margin: 2px 0 0; color: var(--muted); }
     footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
   </style>
 </head>
@@ -67,6 +71,29 @@
     <li><strong>Notifications (optional).</strong> If you turn on the weekly reminder, Clearroll asks to send notifications (<code>POST_NOTIFICATIONS</code>). The reminder is scheduled on your phone.</li>
     <li><strong>Google Play billing.</strong> Used only to sell Clearroll Pro (see below).</li>
   </ul>
+
+  <h2>Every permission the app requests</h2>
+  <p>This is the full list in the app's manifest, including the ones added by the Android and Google libraries it's built with. None of them is used to collect information about you.</p>
+  <dl>
+    <dt><code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code></dt>
+    <dd>Android 13 and later. Read your photos and videos to show them as cards and work out their sizes.</dd>
+    <dt><code>READ_MEDIA_VISUAL_USER_SELECTED</code></dt>
+    <dd>Android 14 and later. If you choose "Select photos and videos", read only the items you picked.</dd>
+    <dt><code>READ_EXTERNAL_STORAGE</code></dt>
+    <dd>Android 12 and older only. Same purpose as the two above, on older versions of Android.</dd>
+    <dt><code>MANAGE_MEDIA</code></dt>
+    <dd>Optional, Android 12 and later. Lets one-tap cleaning move items you chose to Android's trash without a confirmation each time. Off unless you turn it on in Android's settings.</dd>
+    <dt><code>POST_NOTIFICATIONS</code></dt>
+    <dd>Optional, Android 13 and later. Shows the weekly reminder if you turn it on.</dd>
+    <dt><code>com.android.vending.BILLING</code></dt>
+    <dd>Lets you buy Clearroll Pro through Google Play.</dd>
+    <dt><code>INTERNET</code></dt>
+    <dd>Added by Google's Play Billing Library so it can reach Google Play for prices and purchases. Clearroll itself doesn't connect to any server.</dd>
+    <dt><code>ACCESS_NETWORK_STATE</code>, <code>WAKE_LOCK</code>, <code>RECEIVE_BOOT_COMPLETED</code>, <code>FOREGROUND_SERVICE</code></dt>
+    <dd>Added by Android's WorkManager, which schedules the weekly reminder and keeps it scheduled after your phone restarts. The video player library also declares the first two.</dd>
+    <dt><code>com.deletewithfun.clearroll.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code></dt>
+    <dd>Defined by the AndroidX library for Clearroll itself, so that only Clearroll can send messages to its own internal components. No other app can hold it.</dd>
+  </dl>
 
   <h2>What the app keeps on your phone</h2>
   <ul>
@@ -97,7 +124,7 @@
   <p>If this policy changes, this page will be updated and the effective date above will change.</p>
 
   <h2>Contact</h2>
-  <p>Questions about this policy: <a href="mailto:souravrawat77777777@gmail.com">souravrawat77777777@gmail.com</a></p>
+  <p>Questions about this policy: <a href="mailto:souravrawatmail@gmail.com">souravrawatmail@gmail.com</a></p>
 
   <footer>Clearroll · Sourav Rawat</footer>
 </main>
